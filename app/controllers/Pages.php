@@ -7,10 +7,8 @@
 
         public function index(){
             
-            $datos = [
-                "titulo" => "Bienvenidos a FSF"
-            ];
-            $this->vista('pages/index',$datos);
+            
+            $this->vista('pages/auth/login');
         }
 
         
