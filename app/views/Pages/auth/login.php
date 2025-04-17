@@ -1,4 +1,4 @@
-<?php require RUTA_APP . "/views/layout/header.php";?>
+<?php require RUTA_APP . "/views/layout/landing/header.php";?>
 <div class="container">
 
     <!-- Outer Row -->
@@ -16,7 +16,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Ingresar</h1>
                                 </div>
-                                <form id="loginForm" class="user" action="<?php echo RUTA_URL; ?>/AuthController/loginUsuario/"
+                                <form class="user" action="<?php echo RUTA_URL; ?>/AuthController/loginUsuario/"
                                     method="POST">
                                     <div class="form-group">
                                         <input name="email" type="email" class="form-control form-control-user"
@@ -37,18 +37,18 @@
                                            echo $data['error_login'];
                                         }
                                     ?>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-success btn-user btn-block">
                                         Login
                                     </button>
 
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="<?php echo RUTA_URL;?>/AuthController/resetPassword">Olvidé
+                                    <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/resetPassword">Olvidé
                                         mi contraseña</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="<?php echo RUTA_URL;?>/AuthController/register"">Soy Nuevo</a>
+                                    <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/register"">Soy Nuevo</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,4 +63,4 @@
     </div>
 
     
-    <?php require RUTA_APP . "/views/layout/footer.php";?>
+    <?php require RUTA_APP . "/views/layout/landing/footer.php";?>

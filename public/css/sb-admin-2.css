@@ -10861,19 +10861,19 @@ a:focus {
 }
 
 .bg-login-image {
-  background-image: url("./../img/cashflow_img.png");
+  background: url("./../public/img/cashflow.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background-image: url("./../img/cashflow_img.png");
+  background: url("./../public/img/cashflow.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-password-image {
-  background-image: url("./../img/cashflow_img.png");
+  background: url("./../public/img/cashflow.jpg");
   background-position: center;
   background-size: cover;
 }

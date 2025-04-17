@@ -1,11 +1,11 @@
 <?php 
 // clase para conectarse a la base de datos y ejecutar consultas con PDO
 
-   class Base{
+   class Database{
       private $host =DB_HOST;
-      private $usuario = DB_USUARIO;
+      private $user = DB_USER;
       private $password = DB_PASSWORD;
-      private $nombre_base = DB_NOMBRE;
+      private $db_name = DB_NAME;
 
       private $dbh; // database handlers
       private $stmt; // statement
@@ -14,15 +14,15 @@
       public function __construct(){
          // configurar conexion
 
-         $dsn = 'mysql:host='.$this->host .';dbname='.$this->nombre_base;
-         $opciones = array(
+         $dsn = 'mysql:host='.$this->host .';dbname='.$this->db_name;
+         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
          );
          // crear instancia de PDO
 
          try {
-            $this->dbh = new PDO($dsn,$this->usuario,$this->password,$opciones);
+            $this->dbh = new PDO($dsn,$this->user,$this->password,$options);
             $this->dbh->exec('set names utf8'); // 
             
          } catch (PDOException $e) {
@@ -37,24 +37,24 @@
       }
 
       //Vinculamos la consulta con bind
-      public function bind($parametro, $valor, $tipo = null){
-         if (is_null($tipo)){
+      public function bind($param, $value, $type = null){
+         if (is_null($type)){
             switch(true){
-               case is_int($valor):
-                  $tipo = PDO::PARAM_INT;
+               case is_int($value):
+                  $type = PDO::PARAM_INT;
                break;
-               case is_bool($valor):
-                  $tipo = PDO::PARAM_BOOL;
+               case is_bool($value):
+                  $type = PDO::PARAM_BOOL;
                break;
-               case is_null($valor):
-                  $tipo = PDO::PARAM_NULL;
+               case is_null($value):
+                  $type = PDO::PARAM_NULL;
                break;
                default:
-                  $tipo = PDO::PARAM_STR;
+                  $type = PDO::PARAM_STR;
                break;
             }
          }
-         $this->stmt->bindValue($parametro,$valor,$tipo);
+         $this->stmt->bindValue($param,$value,$type);
       }
 
       //Ejecuta la consulta
@@ -62,22 +62,26 @@
          return $this->stmt->execute();
       }
 
-      //Obtener los registros
-      public function registros(){
+      //Obtener los registers
+      public function registers(){
          $this->execute();
          return $this->stmt->fetchAll(PDO::FETCH_OBJ);
       }
 
-      //Obtener un único registro
-      public function registro(){
+      //Obtener un único register
+      public function register(){
          $this->execute();
          return $this->stmt->fetch(PDO::FETCH_OBJ);
       }
 
-      //Obtener cantidad de filas con el metodo rowCount
-      public function rowCount(){
+      // Obtener cantidad de filas con el método rowCount
+      public function rowCount() {
          return $this->stmt->rowCount();
-      }
-
+     }
+ 
+     // Obtener el último ID insertado
+     public function lastId() {
+         return $this->dbh->lastInsertId();
+     }
    }
 ?>
