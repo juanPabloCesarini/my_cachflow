@@ -1,66 +1,48 @@
-<?php require RUTA_APP . "/views/layout/landing/header.php";?>
-<div class="container">
+<?php require RUTA_APP . "/views/layout/auth/header_calls.php";?>
+<body class="hold-transition login-page bg-body-auth">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>MyCashflow</b>SYSTEM</a>
+  </div>
+  <!-- /.login-logo -->
+   
+  <div class="login-box-body">
+    
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Ingresar</h1>
-                                </div>
-                                <form class="user" action="<?php echo RUTA_URL; ?>/AuthController/loginUsuario/"
-                                    method="POST">
-                                    <div class="form-group">
-                                        <input name="email" type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input name="password" type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Recordame</label>
-                                        </div>
-                                    </div>
-                                    <?php 
-                                        if ($data['error_login']!=''){
-                                           echo $data['error_login'];
-                                        }
-                                    ?>
-                                    <button type="submit" class="btn btn-success btn-user btn-block">
-                                        Login
-                                    </button>
-
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/resetPassword">Olvidé
-                                        mi contraseña</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/register"">Soy Nuevo</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+    <form action="<?php echo RUTA_URL;?>/AuthController/loginUsuario/" method="post">
+      <div class="form-group has-feedback">
+        <input name="email" type="email" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="pass" type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-auth btn-block btn-flat">Ingresar</button>
         </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6">
+        <a class="btn btn-auth btn-block btn-flat" href="<?php echo RUTA_URL;?>/AuthController/register">Soy Nuevo</a>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-6">
+        <a class="btn btn-auth btn-block btn-flat" href="<?php echo RUTA_URL;?>/AuthController/resetpass">Olvidé mi contraseña</a>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
-    </div>
+   
 
     
-    <?php require RUTA_APP . "/views/layout/landing/footer.php";?>
+    
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+    
+    <?php require RUTA_APP . "/views/layout/auth/footer_calls.php";?>

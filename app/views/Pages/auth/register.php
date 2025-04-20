@@ -1,82 +1,72 @@
-<?php require RUTA_APP . "/views/layout/landing/header.php";?>
+<?php require RUTA_APP . "/views/layout/auth/header_calls.php";?>
 
-<div class="container">
+<body class="hold-transition register-page bg-body-auth">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>MyCashflow</b>SYSTEM</a>
+  </div>
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                <div class="col-lg-7">
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Crea tu cuenta</h1>
-                        </div>
+  <div class="register-box-body">
+    
 
-                        <form class="user" action="<?php echo RUTA_URL; ?>/AuthController/registrarUsuario/"
-                            method="POST" enctype="multipart/form-data">
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input name="nombre" type="text" class="form-control form-control-user"
-                                        id="exampleFirstName" placeholder="Nombre">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input name="apellido" type="text" class="form-control form-control-user"
-                                        id="exampleLastName" placeholder="Apellido">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="formFile" class="form-label ">Avatar</label>
-                                <input name="avatar" class="form-control" type="file" id="formFile">
-                            </div>
-                            <?php 
-                                if ($data['error_tipo']!=''){
-                                    echo $data['error_tipo'];
-                                }
-                            ?>
-                            <?php 
-                                if ($data['error_megas']!=''){
-                                    echo $data['error_megas'];
-                                }
-                            ?>
-                            <div class="form-group">
-                                <input name="email" type="email" class="form-control form-control-user"
-                                    id="exampleInputEmail" placeholder="Email">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input name="password" type="password" class="form-control form-control-user"
-                                        id="exampleInputPassword" placeholder="Password">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input name="password2" type="password" class="form-control form-control-user"
-                                        id="exampleRepeatPassword" placeholder="Repetir Password">
-                                </div>
-                            </div>
-                            <?php 
-                                if ($data['error_pass']!=''){
-                                    echo $data['error_pass'];
-                                }
-                            ?>
-                            <button type="submit" class="btn btn-success btn-user btn-block">
-                                Guardar
-                            </button>
-
-                        </form>
-                        <hr>
-                        <div class="text-center">
-                            <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/resetPassword">Olvidé mi comntraseña</a>
-                        </div>
-                        <div class="text-center">
-                            <a class="small text-success" href="<?php echo RUTA_URL;?>/AuthController/login">Ya tenés cuenta?
-                                Ingresá</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <form action="../../index.html" method="post">
+      <div class="form-group has-feedback">
+        <input name="nombre" type="text" class="form-control" placeholder="Nombre">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="apellido" type="text" class="form-control" placeholder="Apellido">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="avatar" type="file" class="form-control" placeholder="Ingresa tu imagen de perfil">
+        <span class="fa fa-picture-o form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="email" type="email" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      
+      <div class="form-group has-feedback">
+        <input name="pass" type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input name="pass2" type="password" class="form-control" placeholder="Repetir password">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+      </div>
+      <!-- <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
+            </label>
+          </div>
+        </div> -->
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-auth btn-block btn-flat">Registrarme</button>
         </div>
-    </div>
+        <div class="col-xs-6">
+        <a href="<?php echo RUTA_URL;?>/AuthController/login" class="btn btn-auth btn-block btn-flat">Ya tengo cuenta</a>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
+    <!-- <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+        Google+</a>
+    </div> -->
+
+    
+  </div>
+  <!-- /.form-box -->
 </div>
+<!-- /.register-box -->
 
-<?php require RUTA_APP . "/views/layout/landing/footer.php";?>
+
+<?php require RUTA_APP . "/views/layout/auth/footer_calls.php";?>

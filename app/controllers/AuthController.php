@@ -25,18 +25,19 @@
                 'email' => $_POST['email'],
                 
             ];
-
+            $usuario = $this->authModel->buscar_por_mail($data);
+            
             if($this->authModel->buscar_por_mail($data)){
-                if( $_POST['password']==$this->authModel->buscar_por_mail($data)->pass){
-                    $_SESSION['id']=$this->authModel->buscar_por_mail($data)->id;
+                if( $_POST['pass']==$this->authModel->buscar_por_mail($data)->pass){
+                    $_SESSION['id']=$this->authModel->buscar_por_mail($data)->idUsuario;
                     $_SESSION['nombre']=$this->authModel->buscar_por_mail($data)->nombre;
                     $_SESSION['avatar']=$this->authModel->buscar_por_mail($data)->avatar;
-                    $this->tareaModel->expirarTareas();
-                    $data = [
-                        'tareas' => $this->tareaModel->buscarTareas(0),
+                  //  $this->tareaModel->expirarTareas();
+                    /* $data = [
+                        'avatar' => $this->tareaModel->buscarTareas(0),
                         'estados' => $this->estadoModel->buscar_estados(),
-                    ];
-                    $this->view('pages/dashboard/dashboard',$data);
+                   ]; */ 
+                    $this->view('pages/dashboard/dashboard');
                     
                 }else{
                     $data = [
@@ -74,8 +75,8 @@
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
                 $email = $_POST['email'];
-                $pass = $_POST['password'];
-                $pass2 = $_POST['password2'];
+                $pass = $_POST['pass'];
+                $pass2 = $_POST['pass2'];
                 $avatar = $_FILES['avatar']['name'];
                 $image_type = $_FILES['avatar']['type'];
                 $image_size = $_FILES['avatar']['size'];
@@ -113,12 +114,14 @@
                         'avatar' => $avatar,
                         'email' => $email,
                         'pass' => $pass,
-                        'pass2' => $pass2
                     ];
                     $auth = $this->authModel->buscar_por_mail($data);
                     if (empty($auth)){
                         if($this->authModel->crear_usuario($data)){
-                            $this->view('pages/auth/login');
+                            $data = [
+                                'error_login'=> '',
+                            ];
+                            $this->view('pages/auth/login',$data);
                         }else{
                             die("NO SE PUDO CREAR EL USUARIO");
                         }
@@ -139,16 +142,16 @@
         
         }
     }
-        public function resetPassword(){
+        public function resetpass(){
             
             $data = [
                 'mail' => '',
                 'error_mail' => '',
             ];      
-            $this->view('pages/auth/forgot-password',$data);
+            $this->view('pages/auth/forgot-pass',$data);
         }
 
-        public function enviar_password()
+        public function enviar_pass()
     {
         $email = $_POST['email'];
         $data = [
@@ -169,7 +172,7 @@
                          </div>",
                 "mail"=>'',
             ];
-            $this->view('pages/auth/forgot-password', $data);
+            $this->view('pages/auth/forgot-pass', $data);
         }
     }
 
@@ -179,10 +182,10 @@
             'error_mail'=>'',
             'error_pass'=>'',
         ];
-        $this->view('pages/auth/updated-password',$data);
+        $this->view('pages/auth/updated-pass',$data);
     }
 
-    public function actualizar_password(){
+    public function actualizar_pass(){
         $email = $_POST['email'];
         $passActual =$_POST['pass_actual'];
         $passNueva = $_POST['pass_nueva'];
@@ -195,7 +198,7 @@
                 <p class = 'text-center'>Las contraseñas no coinciden.</p>
              </div>",
             ];
-            $this->view('pages/auth/updated-password',$data);
+            $this->view('pages/auth/updated-pass',$data);
         }else{
             if($this->authModel->change_pass($passNueva, $email)){
                 $data = [
@@ -205,7 +208,7 @@
                     <p class = 'text-center'>La contraseña fue actualizada</p>
                  </div>",
                 ];
-                $this->view('pages/auth/updated-password',$data);
+                $this->view('pages/auth/updated-pass',$data);
             }
         }
 
