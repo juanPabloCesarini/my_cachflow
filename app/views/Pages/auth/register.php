@@ -9,7 +9,7 @@
   <div class="register-box-body">
     
 
-    <form action="../../index.html" method="post">
+    <form action="<?php echo RUTA_URL;?>/AuthController/registrarUsuario" method="post" enctype="multipart/form-data">
       <div class="form-group has-feedback">
         <input name="nombre" type="text" class="form-control" placeholder="Nombre">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -35,15 +35,22 @@
         <input name="pass2" type="password" class="form-control" placeholder="Repetir password">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
-      <!-- <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
-            </label>
-          </div>
-        </div> -->
-        <!-- /.col -->
+      <?php print_r($data['error_cuenta']);?>
+      <?php 
+          if ($data['error_tipo']!=''){
+              echo $data['error_tipo'];
+          }
+      ?>
+      <?php 
+          if ($data['error_megas']!=''){
+              echo $data['error_megas'];
+          }
+      ?>
+      <?php 
+          if ($data['error_cuenta']!=''){
+              echo $data['error_cuenta'];
+          }
+      ?>
         <div class="col-xs-6">
           <button type="submit" class="btn btn-auth btn-block btn-flat">Registrarme</button>
         </div>

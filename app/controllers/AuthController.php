@@ -63,6 +63,7 @@
                     'error_tipo'=>'',
                     'error_megas'=>'',
                     'error_pass'=>'',
+                    'error_cuenta'=>'',
                 ];
             
             $this->view('pages/auth/register',$data);
@@ -115,6 +116,7 @@
                         'email' => $email,
                         'pass' => $pass,
                     ];
+                    
                     $auth = $this->authModel->buscar_por_mail($data);
                     if (empty($auth)){
                         if($this->authModel->crear_usuario($data)){
@@ -126,7 +128,13 @@
                             die("NO SE PUDO CREAR EL USUARIO");
                         }
                     }else{
-                        die("Ya existe una cuenta creada con ese email");
+                        $data = [
+                            'error_cuenta' => '<div class="alert alert-danger" role="alert">
+                            El tamaño de la imagen es demasiado grande
+                          </div>',
+                        ];
+                        $this->view('pages/auth/register',$data);
+                        //die("Ya existe una cuenta creada con ese email");
                     }
                     
                 }else{

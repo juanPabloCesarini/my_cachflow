@@ -9,14 +9,13 @@
 </header>
 <section class="container mt-3 mb-3">
     <h2 class="text-center text-dark">Bienvenido a tu control monetario y financiero</h2>
+    <h5 class="text-center text-secondary">Nuestro sistema te ayudará a controlar tus gastos.</h5>
     <div class="row">
-        <div class="col-md-3">
-            <p class="text-dark text-center">Nuestro sistema te ayudará a controlar tus gastos.</p>
+        <div class="col-md-12 text-center">
             
+        <img class="" src="<?php echo RUTA_URL;?>/img/cashflow.jpeg" alt="">   
         </div>
-        <div class="col-md-9">
-            <img class="" src="<?php echo RUTA_URL;?>/img/cashflow.jpeg" alt="">
-        </div>
+      
     </div>
 
 </section>
