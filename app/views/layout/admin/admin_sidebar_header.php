@@ -46,7 +46,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="index.html"><i class="fa fa-circle-o"></i>Editar Cuenta</a></li>
+            <li class=""><a href="index.html"><i class="fa fa-circle-o"></i>Editar Perfil</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Cerrar Sesión</a></li>
           </ul>
         </li>
@@ -58,7 +58,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="index.html"><i class="fa fa-circle-o"></i>Principal</a></li>
+            <li class=""><a href="<?php echo RUTA_URL;?>/CuentaController/nueva_cuenta"><i class="fa fa-circle-o"></i>Principal</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Secundaria</a></li>
           </ul>
         </li>
